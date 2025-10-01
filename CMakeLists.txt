@@ -22,9 +22,13 @@ include_directories(
     ${SDL_IMAGE_INCLUDE} 
     ${SDL_TTF_INCLUDE}
 ) 
-target_link_libraries(artxt ${SDL_LIB} ${SDL_IMAGE_LIB})
+target_link_libraries(artxt ${SDL_LIB} ${SDL_IMAGE_LIB} ${SDL_TTF_LIB})
 
 add_custom_command(TARGET artxt POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
     ${CMAKE_SOURCE_DIR}/libs $<TARGET_FILE_DIR:artxt>
+)
+add_custom_command(TARGET artxt POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_SOURCE_DIR}/content $<TARGET_FILE_DIR:artxt>/content
 )
