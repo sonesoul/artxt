@@ -1,8 +1,12 @@
 ﻿project ("artxt")
-add_executable(artxt "artxt.cpp" "artxt.h")
 
+add_executable(artxt 
+"src/artxt.cpp"  
+"src/sdlw/include/Window.hpp" 
+"src/sdlw/include/Renderer.hpp" 
+"src/sdlw/Window.cpp" )
 
-# use your own paths to SDL
+# my own path to sdl
 set(SDL_PATH "D:/dev/Env/SDL3")
 
 # SDL
@@ -21,6 +25,7 @@ include_directories(
     ${SDL_INCLUDE} 
     ${SDL_IMAGE_INCLUDE} 
     ${SDL_TTF_INCLUDE}
+    "src/"
 ) 
 target_link_libraries(artxt ${SDL_LIB} ${SDL_IMAGE_LIB} ${SDL_TTF_LIB})
 
