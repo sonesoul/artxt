@@ -1,10 +1,11 @@
 ﻿project ("artxt")
 
-add_executable(artxt 
-"src/artxt.cpp"  
-"src/sdlw/include/Window.hpp" 
-"src/sdlw/include/Renderer.hpp" 
-"src/sdlw/Window.cpp" )
+file(GLOB_RECURSE SRC_FILES
+    "src/*.cpp"
+    "src/*.hpp"
+)
+
+add_executable(artxt ${SRC_FILES})
 
 # my own path to sdl
 set(SDL_PATH "D:/dev/Env/SDL3")
