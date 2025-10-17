@@ -4,6 +4,7 @@
 #include "Method.hpp"
 #include "Delegate.hpp"
 #include "Function.hpp"
+#include <memory>
 
 namespace sdlw {
 
@@ -12,7 +13,7 @@ namespace sdlw {
 
 	private:
 
-		using delegate = Delegate<void, Args...>;
+		using delegate_ptr = std::shared_ptr<Delegate<void, Args...>>;
 
 		using function = Function<void, Args...>;
 		using func_ptr = typename function::function_ptr;
@@ -23,35 +24,31 @@ namespace sdlw {
 		template<typename T>
 		using method_ptr = typename method<T>::function_ptr;
 
-		std::vector<delegate*> _listeners;
+		std::vector<delegate_ptr> _listeners;
 
 	public:
 		
 		Event() {
-			_listeners = std::vector<delegate*>();
+			_listeners = std::vector<delegate_ptr>();
 		}
 		~Event() {
-			for (auto* d : _listeners)
-				delete d;
 			_listeners.clear();
 		}
 
 		template<typename T> 
 		void add(T* obj, method_ptr<T> funcPtr) {
-			_add(new method(obj, funcPtr));
+			_add(std::make_shared<method>(obj, funcPtr));
 		}
 		void add(func_ptr funcPtr) {
-			_add(new function(funcPtr));
+			_add(std::make_shared<function>(funcPtr));
 		}
 
 		template<typename T>
 		void remove(T* obj, method_ptr<T> funcPtr) {
-			auto m = method(obj, funcPtr);
-			_remove(&m);
+			_remove(std::make_shared<method>(obj, funcPtr));
 		}
 		void remove(func_ptr funcPtr) {
-			auto f = function(funcPtr);
-			_remove(&f);
+			_remove(std::make_shared<function>(funcPtr));
 		}
 
 		void invoke(Args... args) const {
@@ -61,17 +58,15 @@ namespace sdlw {
 		}
 
 	private: 
-		void _add(delegate* target) {
+		void _add(delegate_ptr target) {
 			_listeners.push_back(target);
 		}
-		void _remove(delegate* target) {
-			for (auto it = _listeners.begin(); it != _listeners.end(); ++it) {
+		void _remove(delegate_ptr target) {
 
-				auto item = *it;
+			for (auto& it = _listeners.begin(); it != _listeners.end(); ++it) {
 
-				if (*item == *target) {
+				if (*it == target) {
 					_listeners.erase(it);
-					delete item;
 					break;
 				}
 			}
