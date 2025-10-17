@@ -79,13 +79,13 @@ namespace sdlw {
 		using delegate = Delegate<void, Args...>;
 
 		using function = Function<void, Args...>;
-		using func_ptr = function::function_ptr;
+		using func_ptr = typename function::function_ptr;
 		
 		template<typename T>
-		using method = Method<T, void, Args...>;
+		using method = typename Method<T, void, Args...>;
 
 		template<typename T>
-		using method_ptr = method<T>::function_ptr;
+		using method_ptr = typename method<T>::function_ptr;
 
 		std::vector<delegate*> _listeners;
 
