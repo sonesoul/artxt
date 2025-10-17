@@ -54,7 +54,7 @@ namespace sdlw {
 			_remove(&f);
 		}
 
-		void invoke(Args... args) {
+		void invoke(Args... args) const {
 			for (auto& item : _listeners) {
 				item->invoke(args...);
 			}
