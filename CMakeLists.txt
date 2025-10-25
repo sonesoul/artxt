@@ -2,7 +2,8 @@
 
 file(GLOB_RECURSE SRC_FILES
     "src/*.cpp"
-    "src/*.hpp"
+    "src/*.hpp" 
+    "src/*.h"
 )
 
 add_executable(artxt ${SRC_FILES})
