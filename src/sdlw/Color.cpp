@@ -1,4 +1,4 @@
-#include "include/Color.hpp"
+#include "sdlw/Color.hpp"
 #include "SDL3/SDL.h"
 
 using namespace sdlw;

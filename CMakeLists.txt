@@ -2,8 +2,8 @@
 
 file(GLOB_RECURSE SRC_FILES
     "src/*.cpp"
-    "src/*.hpp" 
-    "src/*.h"
+    "include/*.h"
+    "include/*.hpp" 
 )
 
 add_executable(artxt ${SRC_FILES})
@@ -28,6 +28,7 @@ include_directories(
     ${SDL_IMAGE_INCLUDE} 
     ${SDL_TTF_INCLUDE}
     "src/"
+    "include/"
 ) 
 target_link_libraries(artxt ${SDL_LIB} ${SDL_IMAGE_LIB} ${SDL_TTF_LIB})
 

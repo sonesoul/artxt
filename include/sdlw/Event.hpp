@@ -1,6 +1,5 @@
 #pragma once
 #include <vector>
-
 #include "Method.hpp"
 #include "Delegate.hpp"
 #include "Function.hpp"
