@@ -1,5 +1,5 @@
-#include "include/Window.hpp"
-#include "include/Renderer.hpp"
+#include "sdlw/Window.hpp"
+#include "sdlw/Renderer.hpp"
 
 using namespace sdlw;
 
