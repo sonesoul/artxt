@@ -1,6 +1,6 @@
 #pragma once
 #include "SDL3/SDL.h"
-#include "sdlw.h"
+#include "wtypes.h"
 
 namespace sdlw {
 
