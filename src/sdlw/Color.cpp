@@ -12,3 +12,7 @@ Color::Color(byte r, byte g, byte b) :
 Color::Color() : 
 	Color(0, 0, 0, 0) {
 }
+
+Color::operator SDL_Color() const {
+	return SDL_Color{ R, G, B, A };
+}
