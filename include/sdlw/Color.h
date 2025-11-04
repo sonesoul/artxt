@@ -10,5 +10,7 @@ namespace sdlw {
 		Color(byte r, byte g, byte b, byte a);
 		Color(byte r, byte g, byte b);
 		Color();
+
+		operator SDL_Color() const;
 	};
 }
