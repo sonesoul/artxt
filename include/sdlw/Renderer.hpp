@@ -1,20 +1,20 @@
 #pragma once 
-#include "SDL3/SDL.h"
 #include "Event.hpp"
-#include "Drawer.h"
 
 namespace sdlw {
+	struct Drawer;
 
 	class Renderer {
 
 	private:
 
-		SDL_Renderer* _target;
+		SDL_Renderer* _renderer;
 		int _delayTimeMs;
 		sdlw::Event<Drawer&> _event;
 
 	public:
 		Renderer(SDL_Window* window);
+		~Renderer();
 
 		void Render();
 		void setTargetFPS(int fps);
@@ -23,7 +23,7 @@ namespace sdlw {
 			return _event;
 		}
 		inline SDL_Renderer* target() const {
-			return _target;
+			return _renderer;
 		}
 	};
 }

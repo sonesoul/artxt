@@ -1,3 +1,4 @@
+#include "SDL3/SDL.h"
 #include "sdlw/Window.hpp"
 #include "sdlw/Renderer.hpp"
 

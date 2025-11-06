@@ -1,7 +1,6 @@
 #pragma once
 #include <unordered_map>
 #include <string>
-#include "SDL3/SDL.h"
 #include "Event.hpp"
 
 namespace sdlw {
