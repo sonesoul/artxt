@@ -3,3 +3,7 @@
 #include "Color.h"
 #include "Window.hpp"
 #include "Renderer.hpp"
+#include "Drawer.h"
+#include "Surface.h"
+#include "Texture.h"
+#include "Font.h"
