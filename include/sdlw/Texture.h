@@ -1,6 +1,4 @@
 #pragma once
-#include "Renderer.hpp"
-#include "Surface.h"
 
 namespace sdlw {
 	class Texture {
@@ -11,8 +9,8 @@ namespace sdlw {
 		Texture(SDL_Texture* texture) :
 			_texture(texture) {
 		}
-		Texture(Renderer* renderer, Surface* surface) : 
-			Texture(SDL_CreateTextureFromSurface(renderer->target(), surface->target())) {	
+		Texture(SDL_Renderer* renderer, SDL_Surface* surface) : 
+			Texture(SDL_CreateTextureFromSurface(renderer, surface)) {	
 		}
 
 		~Texture() {
