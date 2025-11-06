@@ -3,12 +3,13 @@
 
 using namespace sdlw;
 
-Window::Window(int width, int height, const char* title, SDL_WindowFlags flags) :
-	_target(SDL_CreateWindow(title, width, height, flags)),
-	_sdlEvent(SDL_Event()) { }
+Window::Window(int width, int height, const std::string& title, SDL_WindowFlags flags) :
+	_window(SDL_CreateWindow(title.c_str(), width, height, flags)),
+	_sdlEvent(SDL_Event()) {
+}
 
 Window::~Window() {
-	SDL_DestroyWindow(_target);
+	SDL_DestroyWindow(_window);
 }
 
 void Window::PollEvents() {
