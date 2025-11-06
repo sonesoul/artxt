@@ -1,18 +1,20 @@
 #pragma once
-#include "SDL3/SDL.h"
+#include "Renderer.hpp"
+#include "Surface.h"
 
 namespace sdlw {
 	class Texture {
 
 		SDL_Texture* _texture;
 
-	public: 
-		Texture(SDL_Texture* texture) : 
+	public:
+		Texture(SDL_Texture* texture) :
 			_texture(texture) {
 		}
-		Texture(SDL_Renderer* renderer, SDL_Surface* surface) :
-			Texture(SDL_CreateTextureFromSurface(renderer, surface)) {
+		Texture(Renderer* renderer, Surface* surface) : 
+			Texture(SDL_CreateTextureFromSurface(renderer->target(), surface->target())) {	
 		}
+
 		~Texture() {
 			SDL_DestroyTexture(_texture);
 		}
