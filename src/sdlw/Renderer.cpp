@@ -1,11 +1,12 @@
 #include "SDL3/SDL.h"
 #include "sdlw/Renderer.hpp"
 #include "sdlw/Drawer.h"
+#include "sdlw/Window.hpp"
 
 using namespace sdlw;
 
-Renderer::Renderer(SDL_Window* window) :
-	_renderer(SDL_CreateRenderer(window, nullptr)),
+Renderer::Renderer(Window* window) :
+	_renderer(SDL_CreateRenderer(window->target(), nullptr)),
 	_delayTimeMs(1) {
 }
 Renderer::~Renderer() {

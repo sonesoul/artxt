@@ -2,6 +2,7 @@
 #include "Event.hpp"
 
 namespace sdlw {
+	class Window;
 	struct Drawer;
 
 	class Renderer {
@@ -13,7 +14,7 @@ namespace sdlw {
 		sdlw::Event<Drawer&> _event;
 
 	public:
-		Renderer(SDL_Window* window);
+		Renderer(Window* window);
 		~Renderer();
 
 		void Render();
