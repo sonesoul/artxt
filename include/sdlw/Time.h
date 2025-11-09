@@ -1,28 +1,25 @@
 #pragma once
 #include "SDL3/SDL.h"
 
-static Uint16 TARGET_FPS = 60;
-static Uint32 TARGET_FRAME_TIME_MS = 1000 / TARGET_FPS;
+namespace sdlw {
 
-static Uint64 _frameStart = 0;
+	class Time {
 
-static double _deltaTime = 0;
+		static constexpr Uint16 TARGET_FPS = 60;
+		static constexpr double TARGET_FRAME_TIME_MS = 1000.0 / TARGET_FPS;
 
-void Time_FrameStart() {
-	Uint64 ms = SDL_GetTicks();
+		static Uint64 _lastTime;
+		static Uint64 _frequency;
+		static double _deltaTime;
 
-	_deltaTime = (ms - _frameStart) / 1000.0;
-	_frameStart = ms;
-}
-void Time_FrameEnd() {
-	Uint64 frameTime = SDL_GetTicks() - _frameStart;
+	public:
 
-	if (frameTime < TARGET_FRAME_TIME_MS) {
-		Uint64 ms = TARGET_FRAME_TIME_MS - frameTime;
-		SDL_Delay((Uint32)ms);
-	}
-}
+		Time() = delete;
 
-inline double Time_delta() {
-	return _deltaTime;
+		static void Update();
+
+		static inline double delta() {
+			return _deltaTime;
+		}
+	};
 }
