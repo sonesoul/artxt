@@ -57,14 +57,18 @@ namespace sdlw {
 		}
 
 	private: 
-		void _add(delegate_ptr target) {
-			_listeners.push_back(target);
+		void _add(const delegate_ptr& targetPtr) {
+			_listeners.push_back(targetPtr);
 		}
-		void _remove(delegate_ptr target) {
+		void _remove(const delegate_ptr& targetPtr) {
+
+			auto& target = *targetPtr;
 
 			for (auto& it = _listeners.begin(); it != _listeners.end(); ++it) {
+				delegate_ptr& delegatePtr = *it;
+				auto& current = *delegatePtr;
 
-				if (*it == target) {
+				if (current == target) {
 					_listeners.erase(it);
 					break;
 				}
