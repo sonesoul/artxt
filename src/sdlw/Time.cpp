@@ -19,6 +19,7 @@ void Time::Update() {
 	while (frameTime < target) {
 		counter = getCounter();
 		frameTime = (double)(counter - _lastTime) / _frequency;
+		SDL_Delay(0);
 	}
 
 	_lastTime = counter;
