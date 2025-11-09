@@ -1,9 +1,9 @@
 #pragma once
 #include <vector>
+#include <memory>
 #include "Method.hpp"
 #include "Delegate.hpp"
 #include "Function.hpp"
-#include <memory>
 
 namespace sdlw {
 
