@@ -14,7 +14,7 @@ namespace sdlw {
 	public:
 		Method(T* _obj, function_ptr _funcPtr) : _obj(_obj), _funcPtr(_funcPtr) {}
 
-		R invoke(Args... args) const override {
+		R Invoke(Args... args) const override {
 			return (_obj->*_funcPtr)(args...);
 		}
 

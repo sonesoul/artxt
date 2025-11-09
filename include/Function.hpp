@@ -13,7 +13,7 @@ namespace sdlw {
 	public:
 		Function(function_ptr funcPtr) : _funcPtr(funcPtr) {}
 
-		R invoke(Args... args) const override {
+		R Invoke(Args... args) const override {
 			return _funcPtr(args...);
 		}
 

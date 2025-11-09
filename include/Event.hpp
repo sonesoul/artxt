@@ -52,7 +52,7 @@ namespace sdlw {
 
 		void Invoke(Args... args) const {
 			for (auto& item : _listeners) {
-				item->invoke(args...);
+				item->Invoke(args...);
 			}
 		}
 
