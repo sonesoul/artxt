@@ -16,7 +16,7 @@ void Renderer::Render() {
 	SDL_RenderClear(_renderer);
 
 	Drawer d(_renderer);
-	_event.invoke(d);
+	_event.Invoke(d);
 
 	SDL_RenderPresent(_renderer);
 }
