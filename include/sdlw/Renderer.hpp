@@ -10,7 +10,7 @@ namespace sdlw {
 	private:
 
 		SDL_Renderer* _renderer;
-		sdlw::Event<Drawer&> _event;
+		Event<Drawer&> _event;
 
 	public:
 		Renderer(Window* window);
@@ -18,7 +18,7 @@ namespace sdlw {
 
 		void Render();
 		
-		inline sdlw::Event<Drawer&>& event() {
+		inline Event<Drawer&>& event() {
 			return _event;
 		}
 		inline SDL_Renderer* target() const {
