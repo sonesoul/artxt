@@ -21,7 +21,7 @@ void Window::PollEvents() {
 		auto it = _eventMap.find(sdlEventPtr->type);
 
 		if (it != _eventMap.end()) {
-			it->second.invoke(sdlEventPtr);
+			it->second.Invoke(sdlEventPtr);
 		}
 	}
 }

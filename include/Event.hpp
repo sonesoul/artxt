@@ -35,32 +35,32 @@ namespace sdlw {
 		}
 
 		template<typename T> 
-		void add(T* obj, method_ptr<T> funcPtr) {
-			_add(std::make_shared<method<T>>(obj, funcPtr));
+		void Add(T* obj, method_ptr<T> funcPtr) {
+			AddListener(std::make_shared<method<T>>(obj, funcPtr));
 		}
-		void add(func_ptr funcPtr) {
-			_add(std::make_shared<function>(funcPtr));
+		void Add(func_ptr funcPtr) {
+			AddListener(std::make_shared<function>(funcPtr));
 		}
 
 		template<typename T>
-		void remove(T* obj, method_ptr<T> funcPtr) {
-			_remove(std::make_shared<method<T>>(obj, funcPtr));
+		void Remove(T* obj, method_ptr<T> funcPtr) {
+			RemoveListener(std::make_shared<method<T>>(obj, funcPtr));
 		}
-		void remove(func_ptr funcPtr) {
-			_remove(std::make_shared<function>(funcPtr));
+		void Remove(func_ptr funcPtr) {
+			RemoveListener(std::make_shared<function>(funcPtr));
 		}
 
-		void invoke(Args... args) const {
+		void Invoke(Args... args) const {
 			for (auto& item : _listeners) {
 				item->invoke(args...);
 			}
 		}
 
 	private: 
-		void _add(const delegate_ptr& targetPtr) {
+		void AddListener(const delegate_ptr& targetPtr) {
 			_listeners.push_back(targetPtr);
 		}
-		void _remove(const delegate_ptr& targetPtr) {
+		void RemoveListener(const delegate_ptr& targetPtr) {
 
 			auto& target = *targetPtr;
 
