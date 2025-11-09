@@ -6,15 +6,10 @@
 using namespace sdlw;
 
 Renderer::Renderer(Window* window) :
-	_renderer(SDL_CreateRenderer(window->target(), nullptr)),
-	_delayTimeMs(1) {
+	_renderer(SDL_CreateRenderer(window->target(), nullptr)) {
 }
 Renderer::~Renderer() {
 	SDL_DestroyRenderer(_renderer);
-}
-
-void Renderer::setTargetFPS(int fps) {
-	_delayTimeMs = 1000 / fps;
 }
 
 void Renderer::Render() {

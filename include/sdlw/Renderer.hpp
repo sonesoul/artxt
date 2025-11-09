@@ -10,7 +10,6 @@ namespace sdlw {
 	private:
 
 		SDL_Renderer* _renderer;
-		int _delayTimeMs;
 		sdlw::Event<Drawer&> _event;
 
 	public:
@@ -18,8 +17,7 @@ namespace sdlw {
 		~Renderer();
 
 		void Render();
-		void setTargetFPS(int fps);
-
+		
 		inline sdlw::Event<Drawer&>& event() {
 			return _event;
 		}
