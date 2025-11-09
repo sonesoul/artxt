@@ -36,7 +36,7 @@ namespace sdlw {
 
 		template<typename T> 
 		void add(T* obj, method_ptr<T> funcPtr) {
-			_add(std::make_shared<method>(obj, funcPtr));
+			_add(std::make_shared<method<T>>(obj, funcPtr));
 		}
 		void add(func_ptr funcPtr) {
 			_add(std::make_shared<function>(funcPtr));
@@ -44,7 +44,7 @@ namespace sdlw {
 
 		template<typename T>
 		void remove(T* obj, method_ptr<T> funcPtr) {
-			_remove(std::make_shared<method>(obj, funcPtr));
+			_remove(std::make_shared<method<T>>(obj, funcPtr));
 		}
 		void remove(func_ptr funcPtr) {
 			_remove(std::make_shared<function>(funcPtr));
