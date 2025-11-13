@@ -1,9 +1,11 @@
 #pragma once 
 #include "callable/Event.hpp"
-
+#include "sdlw/Color.h"
+#include "Drawer.h"
 namespace sdlw {
 	class Window;
 	struct Drawer;
+	struct Color;
 
 	class Renderer {
 
@@ -11,6 +13,10 @@ namespace sdlw {
 
 		SDL_Renderer* _renderer;
 		Event<Drawer&> _event;
+		Drawer _drawer;
+
+	public:
+		Color background;
 
 	public:
 		Renderer(Window* window);

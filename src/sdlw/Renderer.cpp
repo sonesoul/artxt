@@ -6,7 +6,9 @@
 using namespace sdlw;
 
 Renderer::Renderer(Window* window) :
-	_renderer(SDL_CreateRenderer(window->target(), nullptr)) {
+	_renderer(SDL_CreateRenderer(window->target(), nullptr)), 
+	_drawer(Drawer(_renderer)), 
+	background(sdlw::Color(0, 0, 0, 0)) { 
 }
 Renderer::~Renderer() {
 	SDL_DestroyRenderer(_renderer);
@@ -15,8 +17,8 @@ Renderer::~Renderer() {
 void Renderer::Render() {
 	SDL_RenderClear(_renderer);
 
-	Drawer d(_renderer);
-	_event.Invoke(d);
+	_event.Invoke(_drawer);
 
+	_drawer.SetColor(background);
 	SDL_RenderPresent(_renderer);
 }

@@ -9,9 +9,6 @@ namespace sdlw {
 		SDL_Renderer* const _renderer;
 
 	public: 
-		Drawer(const Drawer&) = delete;
-		Drawer& operator=(const Drawer&) = delete;
-
 		Drawer(SDL_Renderer* renderer) : 
 			_renderer(renderer) { 
 		}
