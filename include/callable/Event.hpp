@@ -33,7 +33,7 @@ public:
 	}
 
 	template<typename T>
-	void Add(T* obj, method_ptr<T> funcPtr) {
+	void Add(T& obj, method_ptr<T> funcPtr) {
 		AddListener(std::make_shared<method<T>>(obj, funcPtr));
 	}
 	void Add(func_ptr funcPtr) {
@@ -41,7 +41,7 @@ public:
 	}
 
 	template<typename T>
-	void Remove(T* obj, method_ptr<T> funcPtr) {
+	void Remove(T& obj, method_ptr<T> funcPtr) {
 		RemoveListener(std::make_shared<method<T>>(obj, funcPtr));
 	}
 	void Remove(func_ptr funcPtr) {
