@@ -1,36 +1,39 @@
 #pragma once
 #include <string>
+#include <unordered_map>
 
 namespace sdlw {
 	class Font {
 
+		static constexpr const char PRELOAD_CHARACTERS[] =
+			"ABCDEFGHIJKLMNOPQRSTUVWXYZ" 
+			"abcdefghijklmnopqrstuvwxyz" 
+			".,:;!?'\"<>()[]{}+-=*/%&@#$^~_|\\";
+		
 		TTF_Font* _font;
 		byte _height;
-	
+		std::unordered_map<char, Texture*> _charCache;
+
 	public:
-		Font(const std::string& path, byte size);
+		Font(const std::string& path, byte height, Renderer* renderer);
 		~Font();
 
 		Point MeasureString(const std::string& text);
 
-		inline SDL_Surface* RenderGlyph_Solid(const char& c, Color& fg) const {
-			return TTF_RenderGlyph_Solid(_font, (int)c, fg);
-		}
-		inline SDL_Surface* RenderGlyph_Blended(const char& c, Color& fg) const {
+		inline SDL_Surface* RenderGlyph(const char& c, Color& fg) const {
 			return TTF_RenderGlyph_Blended(_font, (int)c, fg);
 		}
-		inline SDL_Surface* RenderGlyph_Shaded(const char& c, Color& fg, Color& bg) const {
-			return TTF_RenderGlyph_Shaded(_font, (int)c, fg, bg);
+		inline Texture* GetChar(const char& c) {
+			return _charCache[c];
 		}
-		inline SDL_Surface* RenderGlyph_LCD(const char& c, Color& fg, Color& bg) const {
-			return TTF_RenderGlyph_LCD(_font, (int)c, fg, bg);
-		}
-		
+
 		inline TTF_Font* target() const {
 			return _font;
 		}
 		inline byte height() const {
 			return _height;
 		} 
+
+		void Preload(Renderer* renderer);
 	};
 }
