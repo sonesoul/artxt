@@ -7,14 +7,14 @@ public:
 	using function_ptr = R(T::*)(Args...);
 
 private:
-	T* _obj;
+	T& _obj;
 	function_ptr _funcPtr;
 
 public:
-	Method(T* _obj, function_ptr _funcPtr) : _obj(_obj), _funcPtr(_funcPtr) {}
+	Method(T& obj, function_ptr _funcPtr) : _obj(obj), _funcPtr(_funcPtr) {}
 
 	R Invoke(Args... args) const override {
-		return (_obj->*_funcPtr)(args...);
+		return (_obj.*_funcPtr)(args...);
 	}
 
 	bool operator==(const Delegate<R, Args...>& other) const override {
@@ -24,6 +24,6 @@ public:
 		return false;
 	}
 	bool operator==(const Method& other) const {
-		return _obj == other._obj && _funcPtr == other._funcPtr;
+		return &_obj == &other._obj && _funcPtr == other._funcPtr;
 	}
 };
