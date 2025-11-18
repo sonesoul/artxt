@@ -3,6 +3,8 @@
 #include <unordered_map>
 
 namespace sdlw {
+	class Renderer;
+
 	class Font {
 
 		static constexpr const char PRELOAD_CHARACTERS[] =
@@ -18,22 +20,21 @@ namespace sdlw {
 		Font(const std::string& path, byte height, Renderer* renderer);
 		~Font();
 
-		Point MeasureString(const std::string& text);
+		Point MeasureString(const std::string& text) const;
 
-		inline SDL_Surface* RenderGlyph(const char& c, Color& fg) const {
-			return TTF_RenderGlyph_Blended(_font, (int)c, fg);
-		}
-		inline Texture* GetChar(const char& c) {
-			return _charCache[c];
-		}
+		Texture* GetGlyph(const char& c) const;
 
-		inline TTF_Font* target() const {
+		inline TTF_Font* raw() const {
 			return _font;
 		}
 		inline byte height() const {
 			return _height;
 		} 
 
+	private:
+		inline SDL_Surface* RenderGlyph(const char& c, Color& fg) const {
+			return TTF_RenderGlyph_Blended(_font, (int)c, fg);
+		}
 		void Preload(Renderer* renderer);
 	};
 }

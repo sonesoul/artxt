@@ -1,6 +1,6 @@
 #include "sdlw/sdlw.h"
-#include "sdlw/Font.h"
-#include <iostream>
+#include "sdlw/Font.hpp"
+#include <stdexcept>
 
 using namespace sdlw;
 
@@ -19,7 +19,7 @@ Font::~Font() {
 	}
 }
 
-Point Font::MeasureString(const std::string& text) {
+Point Font::MeasureString(const std::string& text) const {
 	int width = 0;
 	TTF_MeasureString(_font, text.c_str(), 0, 0, &width, nullptr);
 	return Point{ width, _height };
@@ -37,4 +37,13 @@ void Font::Preload(Renderer* renderer) {
 		texture->SetScaleMode(SDL_SCALEMODE_NEAREST);
 		_charCache[c] = texture;
 	}
+}
+
+Texture* Font::GetGlyph(const char& c) const {
+	auto& it = _charCache.find(c);
+	if (it != _charCache.end()) {
+		return (*it).second;
+	}
+
+	throw std::runtime_error(std::string("couldn't find glyph texture [") + c + ']');
 }
