@@ -1,5 +1,6 @@
 #pragma once
 #include "wtypes.h"
+#include "SDL3/SDL.h"
 
 namespace sdlw {
 
@@ -15,6 +16,7 @@ namespace sdlw {
 		Color() :
 			Color(0, 0, 0, 0) {
 		}
+
 		inline operator SDL_Color() const {
 			return SDL_Color{ R, G, B, A };
 		}

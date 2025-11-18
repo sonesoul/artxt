@@ -1,12 +1,11 @@
 #pragma once 
 #include "callable/Event.hpp"
-#include "sdlw/Color.h"
+#include "Color.h"
 #include "Drawer.h"
+
 namespace sdlw {
 	class Window;
-	struct Drawer;
-	struct Color;
-
+	
 	class Renderer {
 
 	private:

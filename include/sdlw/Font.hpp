@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 #include <unordered_map>
+#include "SDL3_ttf/SDL_ttf.h"
+#include "Point.h"
 
 namespace sdlw {
 	class Renderer;

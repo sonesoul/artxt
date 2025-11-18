@@ -8,17 +8,17 @@ void Drawer::RenderText(const Font& font, const char* text, FPoint position, flo
 
 	size_t length = strlen(text);
 
-	FRect dst = { position.x, position.y, };
+	FRect dst = FRect(position, FPoint(0, 0));
 
 	for (size_t i = 0; i < length; ++i) {
 		Texture* charTexture = font.GetGlyph(text[i]);
 		
-		dst.w = charTexture->width() * scale;
-		dst.h = charTexture->height() * scale;
+		dst.width = charTexture->width() * scale;
+		dst.height = charTexture->height() * scale;
 
 		RenderTexture(charTexture, nullptr, &dst, color);
 
-		dst.x += dst.w;
+		dst.x += dst.width;
 	}
 }
 
@@ -26,5 +26,5 @@ void Drawer::RenderTexture(Texture* texture, FRect* src, FRect* dst, Color* colo
 	if (color != nullptr)
 		texture->SetColor(*color);
 
-	SDL_RenderTexture(_renderer, texture->raw(), src, dst);
+	SDL_RenderTexture(_renderer, texture->raw(), *src, *dst);
 }
