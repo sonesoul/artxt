@@ -11,7 +11,6 @@ namespace sdlw {
 			SDL_FRect _frect;
 		};
 
-
 		FRect(float x, float y, float width, float height) :
 			x(x),
 			y(y),

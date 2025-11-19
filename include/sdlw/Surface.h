@@ -13,7 +13,7 @@ namespace sdlw {
 			SDL_DestroySurface(_surface);
 		}
 
-		inline SDL_Surface* target() {
+		inline SDL_Surface* raw() {
 			return _surface;
 		}
 	};

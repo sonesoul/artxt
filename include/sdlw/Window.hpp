@@ -22,7 +22,7 @@ namespace sdlw {
 		inline Event<const SDL_Event*>& event(Uint32 sdlEventType) {
 			return _eventMap[sdlEventType];
 		}
-		inline SDL_Window* target() const {
+		inline SDL_Window* raw() const {
 			return _window;
 		}
 	};

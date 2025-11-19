@@ -33,7 +33,7 @@ void Font::Preload(Renderer* renderer) {
 		const char& c = PRELOAD_CHARACTERS[i];
 
 		SDL_Surface* surface = RenderGlyph(c, fg);
-		Texture* texture = new Texture(renderer->target(), surface);
+		Texture* texture = new Texture(renderer->raw(), surface);
 		texture->SetScaleMode(SDL_SCALEMODE_NEAREST);
 		_charCache[c] = texture;
 	}

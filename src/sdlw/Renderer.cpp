@@ -6,7 +6,7 @@
 using namespace sdlw;
 
 Renderer::Renderer(Window* window) :
-	_renderer(SDL_CreateRenderer(window->target(), nullptr)), 
+	_renderer(SDL_CreateRenderer(window->raw(), nullptr)), 
 	_drawer(Drawer(_renderer)), 
 	background(sdlw::Color(0, 0, 0, 0)) { 
 }

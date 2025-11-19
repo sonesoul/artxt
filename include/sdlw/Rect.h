@@ -11,7 +11,6 @@ namespace sdlw {
 			SDL_Rect _rect;
 		};
 
-
 		Rect(int x, int y, int width, int height) :
 			x(x),
 			y(y),

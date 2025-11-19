@@ -26,7 +26,7 @@ namespace sdlw {
 		inline Event<Drawer&>& event() {
 			return _event;
 		}
-		inline SDL_Renderer* target() const {
+		inline SDL_Renderer* raw() const {
 			return _renderer;
 		}
 	};
