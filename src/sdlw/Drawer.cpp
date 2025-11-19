@@ -4,14 +4,12 @@
 
 using namespace sdlw;
 
-void Drawer::RenderText(const Font& font, const char* text, FPoint position, float scale, Color* color) {
-
-	size_t length = strlen(text);
+void Drawer::RenderText(const Font& font, std::string text, FPoint position, float scale, Color* color) {
 
 	FRect dst = FRect(position, FPoint(0, 0));
 
-	for (size_t i = 0; i < length; ++i) {
-		Texture* charTexture = font.GetGlyph(text[i]);
+	for (auto& c : text) {
+		Texture* charTexture = font.GetGlyph(c);
 		
 		dst.width = charTexture->width() * scale;
 		dst.height = charTexture->height() * scale;

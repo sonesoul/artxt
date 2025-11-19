@@ -1,6 +1,7 @@
 #pragma once
 #include "Color.h"
 #include "FRect.h"
+#include <string>
 
 namespace sdlw {
 
@@ -15,7 +16,7 @@ namespace sdlw {
 			_renderer(renderer) { 
 		}
 
-		void RenderText(const Font& font, const char* text, FPoint position, float scale, Color* color);
+		void RenderText(const Font& font, std::string text, FPoint position, float scale, Color* color);
 		void RenderTexture(Texture* texture, FRect* src, FRect* dst, Color* color);
 		inline void SetColor(const Color& color) {
 			SDL_SetRenderDrawColor(_renderer, color.R, color.G, color.B, color.A);
