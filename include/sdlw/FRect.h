@@ -21,6 +21,8 @@ namespace sdlw {
 		FRect(FPoint position, FPoint size) :
 			FRect(position.X, position.Y, size.X, size.Y) {
 		}
+		FRect() : FRect(0, 0, 0, 0) {
+		}
 
 		operator SDL_FRect*() {
 			return &_frect;

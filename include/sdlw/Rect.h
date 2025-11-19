@@ -21,8 +21,10 @@ namespace sdlw {
 		Rect(Point position, Point size) :
 			Rect(position.X, position.Y, size.X, size.Y) {
 		}
+		Rect() : Rect(0, 0, 0, 0) {
+		}
 
-		operator SDL_Rect* () {
+		operator SDL_Rect*() {
 			return &_rect;
 		}
 	};

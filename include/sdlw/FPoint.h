@@ -14,8 +14,10 @@ namespace sdlw {
 			X(x),
 			Y(y) {
 		}
+		FPoint() : FPoint(0, 0) {
+		}
 
-		operator SDL_FPoint* () {
+		operator SDL_FPoint*() {
 			return &_fpoint;
 		}
 	};

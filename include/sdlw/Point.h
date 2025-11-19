@@ -14,6 +14,8 @@ namespace sdlw {
 			X(x), 
 			Y(y) {
 		}
+		Point() : Point(0, 0) {
+		}
 
 		operator SDL_Point*() {
 			return &_point;
