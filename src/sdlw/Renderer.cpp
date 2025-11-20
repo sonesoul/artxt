@@ -2,23 +2,26 @@
 #include "sdlw/Renderer.hpp"
 #include "sdlw/Drawer.h"
 #include "sdlw/Window.hpp"
+#include "sdlw/Surface.h"
+#include "sdlw/Texture.h"
 
 using namespace sdlw;
 
 Renderer::Renderer(Window* window) :
-	_renderer(SDL_CreateRenderer(window->raw(), nullptr)), 
-	_drawer(Drawer(_renderer)), 
-	background(sdlw::Color(0, 0, 0, 0)) { 
-}
-Renderer::~Renderer() {
-	SDL_DestroyRenderer(_renderer);
+	SDLHolder(SDL_CreateRenderer(window->raw(), nullptr)),
+	_drawer(raw()),
+	background(sdlw::Color(0, 0, 0, 0)) {
 }
 
 void Renderer::Render() {
-	SDL_RenderClear(_renderer);
+	SDL_RenderClear(raw());
 
 	_event.Invoke(_drawer);
-
 	_drawer.SetColor(background);
-	SDL_RenderPresent(_renderer);
+
+	SDL_RenderPresent(raw());
+}
+
+Texture* Renderer::CreateTexture(Surface* surface) {
+	return new Texture(SDL_CreateTextureFromSurface(raw(), surface->raw()));
 }

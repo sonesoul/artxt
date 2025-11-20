@@ -3,18 +3,19 @@
 #include <unordered_map>
 #include "SDL3_ttf/SDL_ttf.h"
 #include "Point.h"
+#include "SDLHolder.hpp"
 
 namespace sdlw {
 	class Renderer;
+	class Surface;
 
-	class Font {
+	class Font : public SDLHolder<TTF_Font, TTF_CloseFont> {
 
 		static constexpr const char PRELOAD_CHARACTERS[] =
 			"ABCDEFGHIJKLMNOPQRSTUVWXYZ" 
 			"abcdefghijklmnopqrstuvwxyz" 
 			".,:;!?'\"<>()[]{}+-=*/%&@#$^~_|\\";
 		
-		TTF_Font* _font;
 		byte _height;
 		std::unordered_map<char, Texture*> _charCache;
 
@@ -26,17 +27,12 @@ namespace sdlw {
 
 		Texture* GetGlyph(const char& c) const;
 
-		inline TTF_Font* raw() const {
-			return _font;
-		}
 		inline byte height() const {
 			return _height;
 		} 
 
 	private:
-		inline SDL_Surface* RenderGlyph(const char& c, Color& fg) const {
-			return TTF_RenderGlyph_Blended(_font, (int)c, fg);
-		}
+		Surface* CreateGlyph(const char& c, Color& fg) const; 
 		void Preload(Renderer* renderer);
 	};
 }

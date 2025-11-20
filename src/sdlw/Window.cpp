@@ -5,12 +5,8 @@
 using namespace sdlw;
 
 Window::Window(int width, int height, const std::string& title, SDL_WindowFlags flags) :
-	_window(SDL_CreateWindow(title.c_str(), width, height, flags)),
+	SDLHolder(SDL_CreateWindow(title.c_str(), width, height, flags)),
 	_sdlEvent(SDL_Event()) {
-}
-
-Window::~Window() {
-	SDL_DestroyWindow(_window);
 }
 
 void Window::PollEvents() {
