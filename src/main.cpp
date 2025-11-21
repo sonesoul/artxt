@@ -2,8 +2,6 @@
 
 int main()
 {
-	Application app = Application();
-	app.Run();
-
+	Application().Run();
 	return 0;
 }
