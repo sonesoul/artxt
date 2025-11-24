@@ -4,19 +4,19 @@
 
 namespace sdlw {
 	template<typename T, void(*D)(T*)>
-	class SDLHolder {
+	class UniqueResource {
 
 	protected:
 		std::unique_ptr<T, decltype(D)> _item;
 
-		SDLHolder(T* item) : 
+		UniqueResource(T* item) : 
 			_item(item, D) {
 		}
 
-		virtual ~SDLHolder() = default;
+		virtual ~UniqueResource() = default;
 
-		SDLHolder(const SDLHolder&) = delete;
-		SDLHolder& operator=(const SDLHolder&) = delete;
+		UniqueResource(const UniqueResource&) = delete;
+		UniqueResource& operator=(const UniqueResource&) = delete;
 
 	public:
 		inline T* raw() const {

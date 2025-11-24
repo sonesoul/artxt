@@ -3,10 +3,10 @@
 #include <unordered_map>
 #include <string>
 #include "callable/Event.hpp"
-#include "SDLHolder.hpp"
+#include "UniqueResource.hpp"
 
 namespace sdlw {
-	class Window : public SDLHolder<SDL_Window, SDL_DestroyWindow> {
+	class Window : public UniqueResource<SDL_Window, SDL_DestroyWindow> {
 		
 	private:
 		SDL_Event _sdlEvent;

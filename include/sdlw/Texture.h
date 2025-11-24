@@ -1,9 +1,9 @@
 #pragma once
 #include "wtypes.h"
-#include "SDLHolder.hpp"
+#include "UniqueResource.hpp"
 
 namespace sdlw {
-	class Texture : public SDLHolder<SDL_Texture, SDL_DestroyTexture>{
+	class Texture : public UniqueResource<SDL_Texture, SDL_DestroyTexture>{
 
 		float _w;
 		float _h;
@@ -13,7 +13,7 @@ namespace sdlw {
 
 	public:
 		Texture(SDL_Texture* texture) :
-			SDLHolder(texture) {
+			UniqueResource(texture) {
 
 			SDL_Texture* tex = raw();
 			SDL_GetTextureSize(tex, &_w, &_h);

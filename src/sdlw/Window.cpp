@@ -5,7 +5,7 @@
 using namespace sdlw;
 
 Window::Window(int width, int height, const std::string& title, SDL_WindowFlags flags) :
-	SDLHolder(SDL_CreateWindow(title.c_str(), width, height, flags)),
+	UniqueResource(SDL_CreateWindow(title.c_str(), width, height, flags)),
 	_sdlEvent(SDL_Event()) {
 }
 

@@ -5,7 +5,7 @@
 using namespace sdlw;
 
 Font::Font(const std::string& path, byte height, Renderer* renderer) :
-	SDLHolder(TTF_OpenFont(path.c_str(), height)),
+	UniqueResource(TTF_OpenFont(path.c_str(), height)),
 	_height(height) {
 
 	Preload(renderer);

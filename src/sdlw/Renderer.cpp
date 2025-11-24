@@ -8,7 +8,7 @@
 using namespace sdlw;
 
 Renderer::Renderer(Window* window) :
-	SDLHolder(SDL_CreateRenderer(window->raw(), nullptr)),
+	UniqueResource(SDL_CreateRenderer(window->raw(), nullptr)),
 	_drawer(raw()),
 	background(sdlw::Color(0, 0, 0, 0)) {
 }

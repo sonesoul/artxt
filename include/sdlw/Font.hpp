@@ -3,13 +3,13 @@
 #include <unordered_map>
 #include "SDL3_ttf/SDL_ttf.h"
 #include "Point.h"
-#include "SDLHolder.hpp"
+#include "UniqueResource.hpp"
 
 namespace sdlw {
 	class Renderer;
 	class Surface;
 
-	class Font : public SDLHolder<TTF_Font, TTF_CloseFont> {
+	class Font : public UniqueResource<TTF_Font, TTF_CloseFont> {
 
 		static constexpr const char PRELOAD_CHARACTERS[] =
 			"ABCDEFGHIJKLMNOPQRSTUVWXYZ" 
