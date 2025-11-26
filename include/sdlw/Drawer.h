@@ -1,7 +1,5 @@
 #pragma once
-#include "Color.h"
-#include "FPoint.h"
-#include "FRect.h"
+#include "structures.h"
 #include <string>
 
 namespace sdlw {

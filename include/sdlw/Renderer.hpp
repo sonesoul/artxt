@@ -1,7 +1,7 @@
 #pragma once 
 #include "wtypes.h"
 #include "callable/Event.hpp"
-#include "Color.h"
+#include "structures/Color.h"
 #include "Drawer.h"
 #include "UniqueResource.hpp"
 

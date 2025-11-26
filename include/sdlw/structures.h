@@ -1,0 +1,5 @@
+#include "structures/Color.h"
+#include "structures/FPoint.h"
+#include "structures/Point.h"
+#include "structures/Rect.h"
+#include "structures/FRect.h"

@@ -2,7 +2,7 @@
 #include <string>
 #include <unordered_map>
 #include "SDL3_ttf/SDL_ttf.h"
-#include "Point.h"
+#include "structures/Point.h"
 #include "UniqueResource.hpp"
 
 namespace sdlw {
