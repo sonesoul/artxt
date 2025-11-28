@@ -25,11 +25,11 @@ namespace sdlw {
 		}
 		
 	private:
-		static inline double getFrameTime(Uint64 counter) {
+		static inline double elapsed(Uint64 counter) {
 			return (double)(counter - _lastTime) / _frequency;
 		}
 
-		static inline Uint64 getCounter() {
+		static inline Uint64 performanceCounter() {
 			return SDL_GetPerformanceCounter();
 		}
 	};
