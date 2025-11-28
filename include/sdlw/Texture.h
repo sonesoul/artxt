@@ -22,7 +22,6 @@ namespace sdlw {
 		}
 
 		inline void SetColor(const Color& color) { 
-
 			SDL_Texture* tex = raw();
 			SDL_SetTextureColorMod(tex, color.R, color.G, color.B);
 			SDL_SetTextureAlphaMod(tex, color.A);
@@ -31,7 +30,7 @@ namespace sdlw {
 			SDL_SetTextureScaleMode(raw(), scaleMode);
 		}
 		inline void SetBlendMode(SDL_BlendMode& blendMode) {
-			SDL_GetTextureBlendMode(raw(), &blendMode);
+			SDL_SetTextureBlendMode(raw(), blendMode);
 		}
 
 		inline FPoint size() const {
