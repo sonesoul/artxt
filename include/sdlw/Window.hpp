@@ -2,7 +2,7 @@
 #include "wtypes.h"
 #include <unordered_map>
 #include <string>
-#include "callable/Event.hpp"
+#include "functors/Event.hpp"
 #include "UniqueResource.hpp"
 
 namespace sdlw {
