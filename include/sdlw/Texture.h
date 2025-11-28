@@ -5,8 +5,7 @@
 namespace sdlw {
 	class Texture : public UniqueResource<SDL_Texture, SDL_DestroyTexture>{
 
-		float _w;
-		float _h;
+		FPoint _size;
 
 		SDL_ScaleMode _scaleMode;
 		SDL_BlendMode _blendMode;
@@ -16,7 +15,7 @@ namespace sdlw {
 			UniqueResource(texture) {
 
 			SDL_Texture* tex = raw();
-			SDL_GetTextureSize(tex, &_w, &_h);
+			SDL_GetTextureSize(tex, &_size.X, &_size.Y);
 			SDL_GetTextureScaleMode(tex, &_scaleMode);
 			SDL_GetTextureBlendMode(tex, &_blendMode);
 		}
@@ -34,13 +33,13 @@ namespace sdlw {
 		}
 
 		inline FPoint size() const {
-			return FPoint{ _w, _h };
+			return _size;
 		}
 		inline float width() const {
-			return _w;
+			return _size.X;
 		}
 		inline float height() const {
-			return _h;
+			return _size.Y;
 		}
 
 		inline SDL_ScaleMode scaleMode() const {
