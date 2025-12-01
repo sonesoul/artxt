@@ -1,9 +1,10 @@
 #pragma once
 #include <memory>
+#include <stdexcept>
+#include "sdlw/structures/Point.h"
 
 class CharBuffer {
-	
-private:
+
 	uint8_t _width, _height;
 	uint16_t _length;
 	std::unique_ptr<char[]> _buffer;
@@ -22,9 +23,12 @@ public:
 	}
 
 	inline char& at(uint8_t x, uint8_t y) {
-		return _buffer[uint16_t(y) * _width + x];
+		return _buffer[size_t(y) * _width + x];
 	}
 
+	sdlw::Point size() {
+		return sdlw::Point(_width, _height);
+	}
 	inline uint16_t length() const {
 		return _length;
 	}	
