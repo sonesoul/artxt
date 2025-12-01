@@ -1,6 +1,5 @@
 #pragma once
 #include <memory>
-#include <stdexcept>
 #include "sdlw/structures/Point.h"
 
 class CharBuffer {
