@@ -1,6 +1,7 @@
 #pragma once
-#include "wtypes.h"
 #include "SDL3/SDL.h"
+
+using byte = unsigned char;
 
 struct Color {
 	byte R, G, B, A;

@@ -1,5 +1,4 @@
 #pragma once
-#include "wtypes.h"
 
 #include "sdlw/Window.hpp"
 #include "sdlw/Renderer.hpp"
