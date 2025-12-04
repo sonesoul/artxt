@@ -13,11 +13,13 @@ void Window::PollEvents() {
 
 	SDL_Event* sdlEventPtr = &_sdlEvent;
 	while (SDL_PollEvent(sdlEventPtr)) {
-
+		
 		auto it = _eventMap.find(sdlEventPtr->type);
 
 		if (it != _eventMap.end()) {
 			it->second.Invoke(sdlEventPtr);
 		}
+
+		_eventMap[SDL_EVENT_ANY].Invoke(sdlEventPtr);
 	}
 }
