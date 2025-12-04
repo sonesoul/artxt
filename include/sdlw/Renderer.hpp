@@ -1,5 +1,4 @@
-#pragma once 
-#include "wtypes.h"
+#pragma once
 #include "functors/Event.hpp"
 #include "structures/Color.h"
 #include "Drawer.h"

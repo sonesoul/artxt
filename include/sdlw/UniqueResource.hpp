@@ -1,5 +1,4 @@
 #pragma once
-#include "wtypes.h"
 #include <memory>
 
 namespace sdlw {
