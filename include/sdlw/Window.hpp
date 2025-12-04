@@ -22,5 +22,8 @@ namespace sdlw {
 		inline Event<const SDL_Event*>& event(Uint32 sdlEventType) {
 			return _eventMap[sdlEventType];
 		}
+		inline Event<const SDL_Event*>& event() {
+			return _eventMap[SDL_EVENT_ANY];
+		}
 	};
 }
