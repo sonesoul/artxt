@@ -1,4 +1,5 @@
 #pragma once
+#include "SDL3/SDL.h"
 #include "wtypes.h"
 #include <unordered_map>
 #include <string>

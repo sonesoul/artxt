@@ -1,7 +1,7 @@
 #include "app/Application.hpp"
-#include "sdlw/sdlw.h"
 #include "sdlw/Time.h"
-#include "sdlw/Drawer.h"
+#include "sdlw/Renderer.hpp"
+#include "SDL3_ttf/SDL_ttf.h"
 
 using sdlw::Time;
 

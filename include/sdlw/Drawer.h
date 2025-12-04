@@ -1,5 +1,5 @@
 #pragma once
-#include "structures/structures.h"
+#include "structures.h"
 #include <string>
 
 namespace sdlw {

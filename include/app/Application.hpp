@@ -1,6 +1,5 @@
-#include "sdlw/sdlw.h"
-#include "sdlw/Time.h"
-#include "sdlw/Drawer.h"
+#include "sdlw/Window.hpp"
+#include "sdlw/Renderer.hpp"
 
 class Application {
 

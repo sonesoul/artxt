@@ -1,5 +1,5 @@
-#include "sdlw/sdlw.h"
-#include "sdlw/Font.hpp"
+#include "structures.h"
+#include "sdlw.h"
 #include <stdexcept>
 
 using namespace sdlw;
