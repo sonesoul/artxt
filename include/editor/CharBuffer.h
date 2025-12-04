@@ -26,6 +26,9 @@ namespace editor {
 		inline char& at(uint8_t x, uint8_t y) {
 			return _buffer[size_t(y) * _width + x];
 		}
+		inline char at(uint8_t x, uint8_t y) const {
+			return _buffer[size_t(y) * _width + x];
+		}
 
 		inline sdlw::Point size() {
 			return sdlw::Point(_width, _height);

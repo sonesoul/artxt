@@ -1,7 +1,7 @@
 #pragma once
 #include "wtypes.h"
 
-#include "structures.h"
+#include "structures/structures.h"
 
 #include "Window.hpp"
 #include "Renderer.hpp"

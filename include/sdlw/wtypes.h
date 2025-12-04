@@ -1,3 +1,3 @@
 #pragma once 
 
-using byte = unsigned char;	
+using byte = unsigned char;
