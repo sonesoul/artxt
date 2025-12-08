@@ -31,7 +31,7 @@ void Application::Quit() {
 	_quit = true;
 }
 
-void Application::OnEvent(const SDL_Event* e) { 
-	if (e->type == SDL_EVENT_QUIT || e->key.scancode == SDL_SCANCODE_F1)
+void Application::OnEvent(const SDL_Event& e) { 
+	if (e.type == SDL_EVENT_QUIT || e.key.scancode == SDL_SCANCODE_F1)
 		Quit();
 }

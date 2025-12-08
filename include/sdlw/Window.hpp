@@ -12,17 +12,17 @@ namespace sdlw {
 		
 	private:
 		SDL_Event _sdlEvent;
-		std::unordered_map<Uint32, Event<const SDL_Event*>> _eventMap;
+		std::unordered_map<Uint32, Event<const SDL_Event&>> _eventMap;
 
 	public:
 		Window(int width, int height, const std::string& title, SDL_WindowFlags flags);
 
 		void PollEvents();
 		
-		inline Event<const SDL_Event*>& event(Uint32 sdlEventType) {
+		inline Event<const SDL_Event&>& event(Uint32 sdlEventType) {
 			return _eventMap[sdlEventType];
 		}
-		inline Event<const SDL_Event*>& event() {
+		inline Event<const SDL_Event&>& event() {
 			return _eventMap[SDL_EVENT_ANY];
 		}
 	};

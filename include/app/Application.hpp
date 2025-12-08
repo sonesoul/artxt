@@ -19,5 +19,5 @@ public:
 
 private:
 	
-	void OnEvent(const SDL_Event*);
+	void OnEvent(const SDL_Event&);
 };

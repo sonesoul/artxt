@@ -11,15 +11,15 @@ Window::Window(int width, int height, const std::string& title, SDL_WindowFlags 
 
 void Window::PollEvents() {
 
-	SDL_Event* sdlEventPtr = &_sdlEvent;
-	while (SDL_PollEvent(sdlEventPtr)) {
-		
-		auto it = _eventMap.find(sdlEventPtr->type);
+	SDL_Event* eventPtr = &_sdlEvent;
+
+	while (SDL_PollEvent(eventPtr)) {
+		auto it = _eventMap.find(_sdlEvent.type);
 
 		if (it != _eventMap.end()) {
-			it->second.Invoke(sdlEventPtr);
+			it->second.Invoke(_sdlEvent);
 		}
 
-		_eventMap[SDL_EVENT_ANY].Invoke(sdlEventPtr);
+		_eventMap[SDL_EVENT_ANY].Invoke(_sdlEvent);
 	}
 }
