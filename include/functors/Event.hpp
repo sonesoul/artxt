@@ -24,14 +24,7 @@ private:
 	std::vector<delegate_ptr> _listeners;
 
 public:
-
-	Event() {
-		_listeners = std::vector<delegate_ptr>();
-	}
-	~Event() {
-		_listeners.clear();
-	}
-
+	
 	template<typename T>
 	void Add(T& obj, method_ptr<T> funcPtr) {
 		AddListener(std::make_shared<method<T>>(obj, funcPtr));
@@ -55,18 +48,15 @@ public:
 	}
 
 private:
-	void AddListener(const delegate_ptr& targetPtr) {
+	void AddListener(const delegate_ptr targetPtr) {
 		_listeners.push_back(targetPtr);
 	}
-	void RemoveListener(const delegate_ptr& targetPtr) {
-
+	void RemoveListener(const delegate_ptr targetPtr) {
 		auto& target = *targetPtr;
 
-		for (auto& it = _listeners.begin(); it != _listeners.end(); ++it) {
-			delegate_ptr& delegatePtr = *it;
-			auto& current = *delegatePtr;
+		for (auto it = _listeners.begin(); it != _listeners.end(); ++it) {
 
-			if (current == target) {
+			if (**it == target) {
 				_listeners.erase(it);
 				break;
 			}
